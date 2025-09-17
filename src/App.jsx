@@ -1,32 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "./pages/HomePage"
-import SuccessPage from "./pages/SuccessPage"
-import FailPage from "./pages/FailPage"
-import "./App.css"
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  return (
-    <Router>
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
-        <header className="py-6 bg-white/80 backdrop-blur-sm border-b border-green-100">
-          <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-              Casso Ebook Store
-            </h1>
-          </div>
-        </header>
+  const [count, setCount] = useState(0)
 
-        <main className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/payment-success" element={<SuccessPage />} />
-            <Route path="/payment-fail" element={<FailPage />} />
-          </Routes>
-        </main>
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-    </Router>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
   )
 }
 
 export default App
-  
