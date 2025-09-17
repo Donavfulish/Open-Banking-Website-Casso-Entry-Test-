@@ -60,9 +60,10 @@ const distPath = path.join(__dirname, "../dist");
 app.use(express.static(distPath));
 
 // Catch-all route (SPA)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.resolve('../dist/index.html'));
 });
+
 
 // Start server
 app.listen(PORT, () => {
