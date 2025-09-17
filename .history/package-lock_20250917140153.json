@@ -348,7 +348,6 @@
         "arm"
       ],
       "dev": true,
-      "dev": true,
       "license": "MIT",
       "optional": true,
       "os": [

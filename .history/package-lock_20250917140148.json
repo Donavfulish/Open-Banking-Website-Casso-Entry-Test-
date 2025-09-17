@@ -312,7 +312,6 @@
       "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.28.4.tgz",
       "integrity": "sha512-bkFqkLhh3pMBUQQkpVgWDWq/lqzc2678eUyDlTBhRqhCHFguYYGM0Efga7tYk4TogG/3x0EEl66/OQ+WGbWB/Q==",
       "dev": true,
-      "dev": true,
       "license": "MIT",
       "dependencies": {
         "@babel/helper-string-parser": "^7.27.1",
@@ -330,7 +329,6 @@
         "ppc64"
       ],
       "dev": true,
-      "dev": true,
       "license": "MIT",
       "optional": true,
       "os": [
@@ -347,7 +345,6 @@
       "cpu": [
         "arm"
       ],
-      "dev": true,
       "dev": true,
       "license": "MIT",
       "optional": true,
