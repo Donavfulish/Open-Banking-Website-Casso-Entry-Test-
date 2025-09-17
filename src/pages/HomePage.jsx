@@ -30,10 +30,10 @@ const HomePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    
+
     try {
       // GỌI payOS API
-      const response = await axios.post("http://localhost:5000/create-payment-link")
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE}/create-payment-link`)
       if (response.data.checkoutUrl) {
         window.open(response.data.checkoutUrl, "_blank")
       }

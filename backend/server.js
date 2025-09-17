@@ -3,10 +3,15 @@ import dotenv from "dotenv";
 import express, { json, urlencoded } from "express";
 import cors from 'cors'; 
 import { PayOS } from '@payos/node';
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config(); // ✅
+dotenv.config(); 
+
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// PayOS init
 const payOS = new PayOS({
     clientId: process.env.PAYOS_CLIENT_ID,
     apiKey: process.env.PAYOS_API_KEY,
@@ -20,7 +25,8 @@ app.use(urlencoded({ extended: true }));
 
 // --- API để tạo đơn hàng và lấy QR code từ PayOS ---
 app.post('/create-payment-link', async (req, res) => {
-    const DOMAIN = `http://localhost:5173`;
+    const DOMAIN = process.env.CLIENT_URL || process.env.CLIENT_URL_LOCAL;
+
     const body = {
         orderCode: Number(String(Date.now()).slice(-6)),
         amount: 2000,
@@ -43,6 +49,19 @@ app.post('/create-payment-link', async (req, res) => {
         console.error(error);
         res.send("Something went error");
     }
+});
+
+
+// --- Serve React build ---
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const distPath = path.join(__dirname, "../dist");
+app.use(express.static(distPath));
+
+// Catch-all route (SPA)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
 // Start server
