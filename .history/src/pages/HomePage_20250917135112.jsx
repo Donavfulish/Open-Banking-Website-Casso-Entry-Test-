@@ -73,7 +73,7 @@ const HomePage = () => {
       const response = await axios.post("http://localhost:3000/create-payment-link", {
         name: formData.name,
         email: formData.email,
-        amount: 2000,
+        amount: 199000,
         description: "Ebook: Bí Mật Của May Mắn",
       })
 

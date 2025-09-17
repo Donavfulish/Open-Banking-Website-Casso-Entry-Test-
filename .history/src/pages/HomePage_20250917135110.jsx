@@ -70,10 +70,11 @@ const HomePage = () => {
 
     try {
       // Call backend API to create payment link
-      const response = await axios.post("http://localhost:3000/create-payment-link", {
+      const response = await axios.post("http://localhost:3
+        000/create-payment-link", {
         name: formData.name,
         email: formData.email,
-        amount: 2000,
+        amount: 199000,
         description: "Ebook: Bí Mật Của May Mắn",
       })
 
