@@ -66,9 +66,10 @@ const distPath = path.join(projectRoot, "dist");
 app.use(express.static(distPath));
 
 // Đường dẫn 'catch-all' để xử lý các route của frontend
-app.get('/*', (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
+
 
 
 // Start server
