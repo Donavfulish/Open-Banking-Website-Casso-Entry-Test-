@@ -56,12 +56,18 @@ app.post('/create-payment-link', async (req, res) => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const distPath = path.join(__dirname, "../dist");
+// Xác định đường dẫn gốc của project
+const projectRoot = path.resolve(__dirname, '..');
+
+// Xác định đường dẫn đến thư mục 'dist' một cách đáng tin cậy
+const distPath = path.join(projectRoot, "dist");
+
+// Cấu hình Express để phục vụ các file tĩnh từ thư mục 'dist'
 app.use(express.static(distPath));
 
-// Catch-all route (SPA)
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.resolve('../dist/index.html'));
+// Đường dẫn 'catch-all' để xử lý các route của frontend
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 
